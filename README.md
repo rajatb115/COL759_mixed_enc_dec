@@ -1,4 +1,4 @@
-# Cryptograpy (COL759) - Assignment 1 (Hill Cipher)
+# Cryptograpy (COL759) - Assignment 2
 
 ## Contributers
 * Rajat Singh (2020CSZ8507)
