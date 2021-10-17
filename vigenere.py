@@ -54,7 +54,7 @@ def decrypt(ct,key):
     plain = ''
     
     for i in range(ct_len):
-        cipher+=chr((pt_as_int[i]-key_as_int[i%key_len])%26+65)
+        plain+=chr((ct_as_int[i]-key_as_int[i%key_len])%26+65)
     
     return plain
     
@@ -74,4 +74,5 @@ def encrypt(pt,key):
     return cipher
 
 if(debug):
-    print(encrypt("BBB","AAA"))
+    print(encrypt("BBB","CCC"))
+    print(decrypt(encrypt("BBB","CCC"),"CCC"))
