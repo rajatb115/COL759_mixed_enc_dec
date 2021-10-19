@@ -38,11 +38,16 @@ def find_c_text(c,block_sz):
     txt = ""
     j= block_sz
     
+    # print("#c:",c)
+    
     while(j>=0):
+        
         ch = chr(c//(26**j)+ord("A"))
         c = c - (c//(26**j))*(26**j)
         j-=1
         txt = ch + txt
+    
+    # print("txt :",txt)
     # print(block_sz)
     # print(txt)
     return txt
@@ -57,6 +62,9 @@ def encryption(p_text, pub_key):
     while (26**block_sz<=n):
         block_sz+=1
     
+    block_sz-=1
+    # print(block_sz)
+    
     # print(block_sz)
     pt_list = find_block(p_text,block_sz)
     
@@ -64,13 +72,14 @@ def encryption(p_text, pub_key):
     
     for i in pt_list:
         m = find_m(i)
-        
+        # print(m)
         # if(debug):
             # print(m)
         
         c = pow(m,e,n)
-        ct_list.append(c)
-        ans = find_c_text(c,block_sz+1)
+        # print("c :",c)
+        # ct_list.append(c)
+        ans = find_c_text(c,block_sz)
         # print(c," , ",ans)
         et_list.append(ans)
 
@@ -79,8 +88,8 @@ def encryption(p_text, pub_key):
     for i in et_list:
         enc+=i
     return enc
-  
+
 '''
 if(debug):
-    print(encryption("INDIAISMYCOUNTRY",(28471,3)))
+    print(encryption("INDIAISMYCOUNTRYXX",(28471,3)))
 '''

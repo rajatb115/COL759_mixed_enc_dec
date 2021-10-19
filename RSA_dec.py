@@ -6,32 +6,80 @@ import random
 
 debug = True
 max_chr = 26
-ct_list = [24369, 727, 15297, 23133]
+ct_list = []
+
+def find_m(txt):
+    m = 0
+    j = 0
     
-def solve(ct_block,n,d):
-    c = pow(ct_block,d,n)
-    # print(c)
-    txt = ""
-    j=1
-    temp=c
-    while(c!=0):
-        # print(j," ",c%(max_chr**j))
-        txt = txt+ str(c%(max_chr**j))
-        c = c - c%(max_chr**j)
-        c=c//(max_chr**(j-1))
+    for i in txt:
+        m+=(ord(i)-ord("A"))*(max_chr**j)
+        # print(m)
         j+=1
+    
+    return m
+
+def find_block(pt,block_len):
+    lis = []
+    i=0
+    while(i<len(pt)):
+        lis.append(pt[i:min(len(pt),i+block_len)])
+        i += block_len
+    
+    return lis
+    
+def find_c_text(c,block_sz):
+    # print("#c :",c)
+    txt = ""
+    j= block_sz-1
+    
+    while(j>=0):
+        ch = chr(c//(26**j)+ord("A"))
+        c = c - (c//(26**j))*(26**j)
+        j-=1
+        txt = ch + txt
     return txt[::-1]
+    
+def decryption(p_text, priv_key):
+    n,d = priv_key
+    
+    # finding optimal block size
+    block_sz = 0
+    
+    # 26^block_sz < n find the max block_sz possible 
+    while (26**block_sz<=n):
+        block_sz+=1
+    
+    block_sz-=1
+    # print(block_sz)
+    # print(block_sz)
+    pt_list = find_block(p_text,block_sz+1)
+    
+    et_list = []
+    
+    for i in pt_list:
+        # print(i)
+        m = find_m(i)
+        # print(m)
+        # if(debug):
+            # print(m)
+        
+        c = pow(m,d,n)
+        
+        # print("c :",c)
+        
+        ct_list.append(c)
+        ans = find_c_text(c,block_sz)
+        # print(c," , ",ans)
+        et_list.append(ans)
 
-def decryption(et_list, keys):
-    n,d = keys
-    dt_list = []
-    for ct_block in ct_list:
-        # We can use CRT to decrypt each block here
-        ans = solve(int(ct_block),n,d)
-        dt_list.append(ans)
-    return dt_list
-
-
+    # print(ct_list)
+    enc = ""
+    for i in et_list:
+        enc+=i
+    return enc
+  
+'''
 if(debug):
-    # use private key d and public key n for decryption
-    print(decryption(ct_list,(28471,18227)))
+    print(decryption("WLABVRFBZHOACIDAUDYAZENB",(28471,18667)))
+'''
