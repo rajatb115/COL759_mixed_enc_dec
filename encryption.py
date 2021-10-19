@@ -1,5 +1,7 @@
 # encryption of the message done by user A
 import vigenere
+import RSA_dec
+import RSA_enc
 
 debug = True
 
@@ -46,12 +48,25 @@ if (debug):
     print("ska :",ska)
     print("pkb :",pkb)
 
-# Step 5: decrypting cs and k using ska (D(cs, k, skA))
+# Step 5: decrypting cs and k using ska (D(cs, k, ska))
+cs__ = RSA_dec.decryption(cs,ska)
+k__ = RSA_dec.decryption(k,ska)
 
+if (debug):
+    print("cs__ :",cs__)
+    print("k__ :",k__)
 
-# Step 6: encrypting cs'' k'' using pkb (E(D(cs, k, skA), pkB))
+# Step 6: encrypting cs'' k'' using pkb (E(D(cs, k, ska), pkb))
+c = RSA_enc.encryption(cs__,pkb)
+k_ = RSA_enc.encryption(k__,pkb)
 
+if(debug):
+    print("c :",c )
+    print("k_ :",k)
 # Step 7: write the c and k' in a file
-
+fp = open("cipher.txt",'w')
+fp.write(c+"\n")
+fp.write(k_)
+fp.close()
 
 # wallah we are ready for decryption

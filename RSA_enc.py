@@ -10,7 +10,6 @@ ct_list = []
 
 def find_m(txt):
     m = 0
-    
     j = 0
     
     # reversing the string
@@ -79,6 +78,7 @@ def encryption(p_text, pub_key):
     for i in et_list:
         enc+=i
     return enc
-    
+  
+
 if(debug):
     print(encryption("INDIAISMYCOUNTRY",(28471,3)))
