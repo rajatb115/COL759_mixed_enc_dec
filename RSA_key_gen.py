@@ -2,7 +2,9 @@ from random import randrange, getrandbits
 import sys
 import math
 import random
-import rabin_miller
+# import rabin_miller
+import gordon
+import gmpy2
 
 
 debug = True
@@ -17,14 +19,22 @@ def find_mod_inv(a,m):
         q = u3 // v3
         v1, v2, v3, u1, u2, u3 = (u1 - q * v1), (u2 - q * v2), (u3 - q * v3), v1, v2, v3
     return u1 % m
+
 def gcd(a, b):
     while a != 0:
         a, b = b % a, a
     return b
+
 def generate_keys(k_length):
     # create two large prime numbers p and q
-    p = rabin_miller.generate_strong_prime(k_length)
-    q = rabin_miller.generate_strong_prime(k_length)
+    p = gordon.find_strong_prime(k_length)
+    
+    while(not gmpy2.is_strong_prp(p,2)):
+        p = gordon.find_strong_prime(k_length)
+    
+    q = gordon.find_strong_prime(k_length)
+    while(not gmpy2.is_strong_prp(q,2) or p==q):
+        q = gordon.find_strong_prime(k_length)
     
     # n = p * q
     n = p*q
