@@ -65,6 +65,7 @@ def generate_strong_prime(k):
     
     return prime
 
+'''
 if(debug):
     print("\nprime number :",generate_strong_prime(10))
-
+'''

@@ -46,7 +46,6 @@ def generate_keys(k_length):
         if gcd(x, a) == 1:
             break
     
-    
     # find d = modular inverse of x
     d = find_mod_inv(x, a)
     public_key = (n, x)
@@ -55,8 +54,8 @@ def generate_keys(k_length):
     return public_key,private_key
 
 
-public_key1, private_key1 = generate_keys(128)
-public_key2, private_key2 = generate_keys(128)
+public_key1, private_key1 = generate_keys(10)
+public_key2, private_key2 = generate_keys(10)
 
 
 if(debug):
