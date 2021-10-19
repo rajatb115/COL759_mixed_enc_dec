@@ -34,17 +34,17 @@ def find_block(pt,block_len):
     
     return lis
     
-def find_c_text(c):
+def find_c_text(c,block_sz):
     txt = ""
-    j=1
-    temp=c
-    while(c!=0):
-        # print(j," ",c%(max_chr**j))
-        txt = txt+ str(c%(max_chr**j))
-        c = c - c%(max_chr**j)
-        c=c//(max_chr**(j-1))
-        j+=1
-    print(temp," gives ",txt)
+    j= block_sz
+    
+    while(j>=0):
+        ch = chr(c//(26**j)+ord("A"))
+        c = c - (c//(26**j))*(26**j)
+        j-=1
+        txt = ch + txt
+    # print(block_sz)
+    # print(txt)
     return txt
     
 def encryption(p_text, pub_key):
@@ -56,7 +56,8 @@ def encryption(p_text, pub_key):
     # 26^block_sz < n find the max block_sz possible 
     while (26**block_sz<=n):
         block_sz+=1
-        
+    
+    # print(block_sz)
     pt_list = find_block(p_text,block_sz)
     
     et_list = []
@@ -69,16 +70,17 @@ def encryption(p_text, pub_key):
         
         c = pow(m,e,n)
         ct_list.append(c)
-        ans = find_c_text(c)
+        ans = find_c_text(c,block_sz+1)
         # print(c," , ",ans)
         et_list.append(ans)
 
-    print(ct_list)
+    # print(ct_list)
     enc = ""
     for i in et_list:
         enc+=i
     return enc
   
-
+'''
 if(debug):
     print(encryption("INDIAISMYCOUNTRY",(28471,3)))
+'''
