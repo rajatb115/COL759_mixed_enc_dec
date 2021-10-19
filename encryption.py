@@ -46,4 +46,12 @@ if (debug):
     print("ska :",ska)
     print("pkb :",pkb)
 
+# Step 5: decrypting cs and k using ska (D(cs, k, skA))
 
+
+# Step 6: encrypting cs'' k'' using pkb (E(D(cs, k, skA), pkB))
+
+# Step 7: write the c and k' in a file
+
+
+# wallah we are ready for decryption
