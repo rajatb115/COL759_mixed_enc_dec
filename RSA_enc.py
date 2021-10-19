@@ -80,7 +80,5 @@ def encryption(p_text, pub_key):
         enc+=i
     return enc
   
-'''
 if(debug):
     print(encryption("INDIAISMYCOUNTRY",(28471,3)))
-'''
