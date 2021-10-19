@@ -19,6 +19,9 @@ fp = open(input("Enter the file name(contain message) with location: "),'r')
 message = get_message(fp)
 fp.close()
 
+if(debug):
+    print("message :",message)
+
 # Step 2: read vigenere cipher key
 fp = open(input("Enter the file name(contain vigenere key) with location: "),'r')
 k = fp.readline()
@@ -28,8 +31,19 @@ fp.close()
 cs = vigenere.encrypt(message,k)
 if(debug):
     print("vigenere kye :",k)
-    print("message :",message)
     print("cs :",cs)
 
+# Step 4: reading A's private key and B's public keys
+fp = open("privateA/private_key_A.txt",'r')
+ska = (fp.readline()[:-1],fp.readline())
+fp.close()
 
-# reading user A private keys and user B public keys
+fp = open("publicAB/public_key_B.txt",'r')
+pkb = (fp.readline()[:-1],fp.readline())
+fp.close()
+
+if (debug):
+    print("ska :",ska)
+    print("pkb :",pkb)
+
+

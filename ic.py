@@ -20,5 +20,8 @@ def index_of_concidence(s):
     
     return IC
 
+'''
 if (debug):
     print(index_of_concidence("hihowareyouIamgoodramsaidsowhatistheproblemwithyourpartofthecode".upper()))
+    
+'''
