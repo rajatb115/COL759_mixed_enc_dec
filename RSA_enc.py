@@ -5,8 +5,8 @@ import random
 # import rabin_miller
 
 debug = True
-
 max_chr = 26
+ct_list = []
 
 def find_m(txt):
     m = 0
@@ -37,15 +37,15 @@ def find_block(pt,block_len):
     
 def find_c_text(c):
     txt = ""
-    
     j=1
-    
+    temp=c
     while(c!=0):
+        # print(j," ",c%(max_chr**j))
         txt = txt+ str(c%(max_chr**j))
         c = c - c%(max_chr**j)
         c=c//(max_chr**(j-1))
         j+=1
-    
+    print(temp," gives ",txt)
     return txt
     
 def encryption(p_text, pub_key):
@@ -65,14 +65,16 @@ def encryption(p_text, pub_key):
     for i in pt_list:
         m = find_m(i)
         
-        if(debug):
-            print(m)
+        # if(debug):
+            # print(m)
         
         c = pow(m,e,n)
-        
+        ct_list.append(c)
         ans = find_c_text(c)
+        # print(c," , ",ans)
         et_list.append(ans)
-    
+
+    print(ct_list)
     enc = ""
     for i in et_list:
         enc+=i
