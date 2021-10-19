@@ -6,7 +6,7 @@ import random
 
 debug = True
 max_chr = 26
-ct_list = []
+# ct_list = []
 
 def find_m(txt):
     m = 0

@@ -63,6 +63,7 @@ k_ = RSA_enc.encryption(k__,pkb)
 if(debug):
     print("c :",c )
     print("k_ :",k)
+
 # Step 7: write the c and k' in a file
 fp = open("cipher.txt",'w')
 fp.write(c+"\n")
