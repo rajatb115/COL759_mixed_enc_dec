@@ -55,8 +55,34 @@ def generate_keys(k_length):
     return public_key,private_key
 
 
-public_key, private_key = generate_keys(128)
+public_key1, private_key1 = generate_keys(128)
+public_key2, private_key2 = generate_keys(128)
+
 
 if(debug):
-    print("public_key :",public_key)
-    print("private_key :",private_key)
+    print("public_key1 :",public_key1)
+    print("private_key1 :",private_key1)
+    print("public_key2 :",public_key2)
+    print("private_key2 :",private_key2)
+    
+# Storing the value of userA
+fp = open("privateA/private_key_A.txt",'w')
+fp.write(str(private_key1[0])+"\n")
+fp.write(str(private_key1[1]))
+fp.close()
+
+fp = open("publicAB/public_key_A.txt",'w')
+fp.write(str(public_key1[0])+"\n")
+fp.write(str(public_key1[1]))
+fp.close()
+
+# Storing the value of userB
+fp = open("privateB/private_key_B.txt",'w')
+fp.write(str(private_key2[0])+"\n")
+fp.write(str(private_key2[1]))
+fp.close()
+
+fp = open("publicAB/public_key_B.txt",'w')
+fp.write(str(public_key2[0])+"\n")
+fp.write(str(public_key2[1]))
+fp.close()
