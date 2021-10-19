@@ -81,5 +81,5 @@ def decryption(p_text, priv_key):
   
 '''
 if(debug):
-    print(decryption("WLABVRFBZHOACIDAUDYAZENB",(28471,18667)))
+    print(decryption("OHOBIXEALIXAIGXATKOBIGXARXPBIZIB",(28471,18667)))
 '''

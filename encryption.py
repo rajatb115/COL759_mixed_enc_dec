@@ -37,11 +37,11 @@ if(debug):
 
 # Step 4: reading A's private key and B's public keys
 fp = open("privateA/private_key_A.txt",'r')
-ska = (fp.readline()[:-1],fp.readline())
+ska = (int(fp.readline()[:-1]),int(fp.readline()))
 fp.close()
 
 fp = open("publicAB/public_key_B.txt",'r')
-pkb = (fp.readline()[:-1],fp.readline())
+pkb = (int(fp.readline()[:-1]),int(fp.readline()))
 fp.close()
 
 if (debug):
@@ -62,7 +62,7 @@ k_ = RSA_enc.encryption(k__,pkb)
 
 if(debug):
     print("c :",c )
-    print("k_ :",k)
+    print("k_ :",k_)
 
 # Step 7: write the c and k' in a file
 fp = open("cipher.txt",'w')

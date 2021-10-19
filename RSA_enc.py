@@ -50,6 +50,7 @@ def find_c_text(c,block_sz):
     # print("txt :",txt)
     # print(block_sz)
     # print(txt)
+    print(txt)
     return txt
     
 def encryption(p_text, pub_key):
@@ -63,7 +64,7 @@ def encryption(p_text, pub_key):
         block_sz+=1
     
     block_sz-=1
-    # print(block_sz)
+    print(block_sz)
     
     # print(block_sz)
     pt_list = find_block(p_text,block_sz)
@@ -89,7 +90,7 @@ def encryption(p_text, pub_key):
         enc+=i
     return enc
 
-'''
+
 if(debug):
-    print(encryption("INDIAISMYCOUNTRYXX",(28471,3)))
-'''
+    print(encryption("HELLOHOWAREYOUAREYOUFINE",(28471,3)))
+
