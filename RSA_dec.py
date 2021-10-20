@@ -37,8 +37,9 @@ def find_c_text(c,block_sz):
         ch = chr(c//(26**j)+ord("A"))
         c = c - (c//(26**j))*(26**j)
         j-=1
-        txt = ch + txt
-    return txt[::-1]
+        txt += ch
+    #return txt[::-1]
+    return txt[:]
     
 def decryption(p_text, priv_key):
     n,d = priv_key
@@ -56,8 +57,9 @@ def decryption(p_text, priv_key):
     pt_list = find_block(p_text,block_sz+1)
     
     et_list = []
-    
+    cnt = 0
     for i in pt_list:
+        
         # print(i)
         m = find_m(i)
         # print(m)
@@ -70,6 +72,19 @@ def decryption(p_text, priv_key):
         
         ct_list.append(c)
         ans = find_c_text(c,block_sz)
+        
+        if(cnt==len(pt_list)-1):
+            ans1 = ""
+            tmp = 1
+            for ii in ans:
+                if (ii == 'A' and tmp ==1):
+                    continue
+                else:
+                    tmp = 2
+                    ans1+=ii
+            ans = ans1
+        cnt+=1
+        
         # print(c," , ",ans)
         et_list.append(ans)
 
@@ -78,8 +93,6 @@ def decryption(p_text, priv_key):
     for i in et_list:
         enc+=i
     return enc
-  
-'''
+
 if(debug):
-    print(decryption("OHOBIXEALIXAIGXATKOBIGXARXPBIZIB",(28471,18667)))
-'''
+    print(decryption("DBOBIDRAKSBABFIBWIBASVLA",(28471,18667)))

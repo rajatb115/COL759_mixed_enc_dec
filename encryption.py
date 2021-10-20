@@ -2,6 +2,8 @@
 import vigenere
 import RSA_dec
 import RSA_enc
+import RSA_dec_new
+import RSA_enc_new
 
 debug = True
 
@@ -49,8 +51,8 @@ if (debug):
     print("pkb :",pkb)
 
 # Step 5: decrypting cs and k using ska (D(cs, k, ska))
-cs__ = RSA_dec.decryption(cs,ska)
-k__ = RSA_dec.decryption(k,ska)
+cs__ = RSA_dec_new.decryption(cs,ska)
+k__ = RSA_dec_new.decryption(k,ska)
 
 if (debug):
     print("cs__ :",cs__)

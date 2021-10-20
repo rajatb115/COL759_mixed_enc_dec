@@ -36,6 +36,9 @@ def generate_keys(k_length):
     while(not gmpy2.is_strong_prp(q,2) or p==q):
         q = gordon.find_strong_prime(k_length)
     
+    if(debug):
+        print("p :",p)
+        print("q :",q)
     # n = p * q
     n = p*q
     
@@ -54,8 +57,8 @@ def generate_keys(k_length):
     return public_key,private_key
 
 
-public_key1, private_key1 = generate_keys(10)
-public_key2, private_key2 = generate_keys(10)
+public_key1, private_key1 = generate_keys(3)
+public_key2, private_key2 = generate_keys(3)
 
 
 if(debug):

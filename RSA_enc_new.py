@@ -13,7 +13,9 @@ def find_m(txt):
     j = 0
     
     # reversing the string
-    txt1 = txt[::-1]
+    txt1 = ""
+    for i in txt:
+        txt1= i+txt1
     
     # print(txt1)
     
@@ -34,7 +36,7 @@ def find_block(pt,block_len):
     
 def find_c_text(c,block_sz):
     txt = ""
-    j= block_sz
+    j= block_sz-1
     
     # print("#c:",c)
     
@@ -48,8 +50,7 @@ def find_c_text(c,block_sz):
     # print("txt :",txt)
     # print(block_sz)
     # print(txt)
-    #print(txt[::-1])
-    #print(txt[::-1])
+    print(txt[::-1])
     return txt[::-1]
     
 def encryption(p_text, pub_key):
@@ -63,12 +64,10 @@ def encryption(p_text, pub_key):
         block_sz+=1
     
     block_sz-=1
-    
-    if(debug):
-        print("block size :",block_sz)
+    print(block_sz)
     
     # print(block_sz)
-    pt_list = find_block(p_text,block_sz)
+    pt_list = find_block(p_text,block_sz+1)
     
     et_list = []
     

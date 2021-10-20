@@ -6,21 +6,17 @@ import random
 
 debug = True
 max_chr = 26
-# ct_list = []
+ct_list = []
 
 def find_m(txt):
     m = 0
     j = 0
     
-    # reversing the string
-    txt1 = txt[::-1]
-    
-    # print(txt1)
-    
-    for i in txt1:
+    for i in txt:
         m+=(ord(i)-ord("A"))*(max_chr**j)
         # print(m)
         j+=1
+    
     return m
 
 def find_block(pt,block_len):
@@ -33,27 +29,20 @@ def find_block(pt,block_len):
     return lis
     
 def find_c_text(c,block_sz):
+    # print("#c :",c)
     txt = ""
     j= block_sz
     
-    # print("#c:",c)
-    
     while(j>=0):
-        
         ch = chr(c//(26**j)+ord("A"))
         c = c - (c//(26**j))*(26**j)
         j-=1
-        txt += ch 
+        txt += ch
+    #return txt[::-1]
+    return txt[:]
     
-    # print("txt :",txt)
-    # print(block_sz)
-    # print(txt)
-    #print(txt[::-1])
-    #print(txt[::-1])
-    return txt[::-1]
-    
-def encryption(p_text, pub_key):
-    n,e = pub_key
+def decryption(p_text, priv_key):
+    n,d = priv_key
     
     # finding optimal block size
     block_sz = 0
@@ -63,24 +52,24 @@ def encryption(p_text, pub_key):
         block_sz+=1
     
     block_sz-=1
-    
-    if(debug):
-        print("block size :",block_sz)
-    
+    # print(block_sz)
     # print(block_sz)
     pt_list = find_block(p_text,block_sz)
     
     et_list = []
     
     for i in pt_list:
+        # print(i)
         m = find_m(i)
         # print(m)
         # if(debug):
             # print(m)
         
-        c = pow(m,e,n)
+        c = pow(m,d,n)
+        
         # print("c :",c)
-        # ct_list.append(c)
+        
+        ct_list.append(c)
         ans = find_c_text(c,block_sz)
         # print(c," , ",ans)
         et_list.append(ans)
@@ -90,8 +79,7 @@ def encryption(p_text, pub_key):
     for i in et_list:
         enc+=i
     return enc
-
+  
 
 if(debug):
-    print(encryption("HITHEREHOWAREYOU",(28471,3)))
-
+    print(decryption("DBOBIDRAKSBABFIBWIBASVLA",(28471,18667)))

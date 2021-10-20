@@ -2,6 +2,8 @@
 import vigenere
 import RSA_dec
 import RSA_enc
+import RSA_dec_new
+import RSA_enc_new
 
 debug = True
 
@@ -37,13 +39,27 @@ if(debug):
     print("k__ :",k__)
 
 # step 4: encrypting cs'' k'' using pka (E(D(c, k_, skb), pka))
-cs = RSA_enc.encryption(cs__,pka)
-k = RSA_enc.encryption(k__,pka)
+cs = RSA_enc_new.encryption(cs__,pka)
+k = RSA_enc_new.encryption(k__,pka)
 
 if(debug):
     print("cs :",cs)
     print("k :",k)
 
+    
+i=len(k)-1
+while(k[i]=='A'):
+    i-=1
+k = k[:i+1]
+
+i=len(cs)-1
+while(cs[i]=='A'):
+    i-=1
+cs = cs[:i+1]
+
+if(debug):
+    print("k :",k)
+    print("cs :",cs)
 # step 5: decryption using vigenere cipher m <- D(cs, k)
 m = vigenere.decrypt(cs,k)
 
@@ -55,3 +71,6 @@ fp = open("plain.txt",'w')
 fp.write(m+"\n")
 fp.write(k)
 fp.close()
+
+print(m)
+print(k)
