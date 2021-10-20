@@ -1,14 +1,16 @@
 # Cryptograpy (COL759) - Assignment 2
 
-1) Run python3 RSA_key_gen.py
--> enter the key size
+1) Run command:- python3 RSA_key_gen.py
 
-2) Run python3 encryption.py
--> enter location of input text
--> enter location of vigenere key
+-> It will ask the key size you wish to use for RSA. Once you run this code, all the public and private keys are generated.
 
-3) Run python3 decryption.py
+2) Run command:- python3 encryption.py
 
+-> It will ask to enter location of input text = "Inp.txt". This is the given text which we are interested in transfering. Then enter location of vigenere key = "vigKey.txt" which is also given to us. This code will store the encrypted text in cipher.txt file.
+
+3) Run command:- python3 decryption.py
+
+-> It will decrypt the text from cipher.txt and store the output in plain.txt
 
 ## Contributers
 * Rajat Singh (2020CSZ8507)
