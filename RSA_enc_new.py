@@ -4,7 +4,7 @@ import math
 import random
 # import rabin_miller
 
-debug = True
+debug = False
 max_chr = 26
 # ct_list = []
 
@@ -50,7 +50,7 @@ def find_c_text(c,block_sz):
     # print("txt :",txt)
     # print(block_sz)
     # print(txt)
-    print(txt[::-1])
+    # print(txt[::-1])
     return txt[::-1]
     
 def encryption(p_text, pub_key):
@@ -64,7 +64,7 @@ def encryption(p_text, pub_key):
         block_sz+=1
     
     block_sz-=1
-    print(block_sz)
+    # print(block_sz)
     
     # print(block_sz)
     pt_list = find_block(p_text,block_sz+1)

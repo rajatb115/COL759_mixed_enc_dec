@@ -1,5 +1,5 @@
 
-debug = True
+debug = False
 
 def decrypt(ct,key):
     key_len = len(key)

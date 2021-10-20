@@ -5,7 +5,7 @@ import RSA_enc
 import RSA_dec_new
 import RSA_enc_new
 
-debug = True
+debug = False
 
 def get_message(fp):
     fp_read = fp.readline()

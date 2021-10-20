@@ -1,6 +1,6 @@
 from random import randrange, getrandbits
 
-debug = True
+debug = False
 
 def check_prime(n,k):
     

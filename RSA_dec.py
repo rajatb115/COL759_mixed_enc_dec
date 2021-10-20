@@ -4,7 +4,7 @@ import math
 import random
 # import rabin_miller
 
-debug = True
+debug = False
 max_chr = 26
 ct_list = []
 

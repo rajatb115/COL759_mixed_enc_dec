@@ -5,7 +5,7 @@ import RSA_enc
 import RSA_dec_new
 import RSA_enc_new
 
-debug = True
+debug = False
 
 # step 1 : read the message file (c,k_)
 fp = open("cipher.txt",'r')
@@ -72,5 +72,5 @@ fp.write(m+"\n")
 fp.write(k)
 fp.close()
 
-print(m)
-print(k)
+# print(m)
+# print(k)

@@ -2,7 +2,7 @@ import rabin_miller
 import gmpy2
 import random
 
-debug = True
+debug = False
 
 def find_strong_prime(prime_bits):
 
