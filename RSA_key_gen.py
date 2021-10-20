@@ -7,7 +7,7 @@ import gordon
 import gmpy2
 
 
-debug = True
+debug = False
 
 def find_mod_inv(a,m):
     if gcd(a, m) != 1:
@@ -56,9 +56,11 @@ def generate_keys(k_length):
     
     return public_key,private_key
 
+# length of key 
+k_size = input("Enter key size : ")
 
-public_key1, private_key1 = generate_keys(3)
-public_key2, private_key2 = generate_keys(3)
+public_key1, private_key1 = generate_keys(int(k_size))
+public_key2, private_key2 = generate_keys(int(k_size))
 
 
 if(debug):
