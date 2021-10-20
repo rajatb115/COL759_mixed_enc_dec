@@ -62,7 +62,6 @@ k_size = input("Enter key size : ")
 public_key1, private_key1 = generate_keys(int(k_size))
 public_key2, private_key2 = generate_keys(int(k_size))
 
-
 if(debug):
     print("public_key1 :",public_key1)
     print("private_key1 :",private_key1)
