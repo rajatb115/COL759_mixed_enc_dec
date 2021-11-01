@@ -19,7 +19,7 @@ def get_message(fp):
     return message
 
 # step 1 : read the message file
-fp = open(input("Enter the file name(contain message) with location: "),'r')
+fp = open(input("Enter the message file name with location: "),'r')
 message = get_message(fp)
 fp.close()
 
